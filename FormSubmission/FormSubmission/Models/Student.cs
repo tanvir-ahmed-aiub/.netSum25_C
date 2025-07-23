@@ -19,7 +19,19 @@ namespace FormSubmission.Models
         public string Address { get; set; }
         [Required(ErrorMessage = "Email Needed")]
         [EmailAddress]
-        
         public string Email { get; set; }
+        [Required]
+        public string Gender { get; set; }
+        [Required]
+        public string Profession { get; set; }
+        [Required]
+        public string[] Hobbies { get; set; }
+
+        public DateTime Dob { get; set; }
+
+        public Student() { 
+            Dob = DateTime.Now;
+        }
+
     }
 }
