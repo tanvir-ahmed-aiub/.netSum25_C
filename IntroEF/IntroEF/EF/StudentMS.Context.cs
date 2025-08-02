@@ -18,6 +18,7 @@ namespace IntroEF.EF
         public Sum25_CEntities()
             : base("name=Sum25_CEntities")
         {
+            this.Configuration.LazyLoadingEnabled = false;
         }
     
         protected override void OnModelCreating(DbModelBuilder modelBuilder)

@@ -4,6 +4,7 @@
     <EntitySetMapping Name="Students">
       <EntityTypeMapping TypeName="Sum25_CModel.Student">
         <MappingFragment StoreEntitySet="Students">
+          <ScalarProperty Name="DeptId" ColumnName="DeptId" />
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Name" ColumnName="Name" />
           <ScalarProperty Name="Cgpa" ColumnName="Cgpa" />

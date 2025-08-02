@@ -1,4 +1,6 @@
-﻿using IntroEF.EF;
+﻿using AutoMapper;
+using IntroEF.DTOs;
+using IntroEF.EF;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,19 +12,32 @@ namespace IntroEF.Controllers
     public class StudentController : Controller
     {
         Sum25_CEntities db = new Sum25_CEntities();
+
+        Mapper GetMapper() {
+            
+            var config = new MapperConfiguration(cfg => {
+                cfg.CreateMap<StudentDTO, Student>().ReverseMap();
+
+            });
+            var mapper = new Mapper(config);
+            return mapper;
+        }
         // GET: Student
         public ActionResult Index()
         {
             var data = db.Students.ToList();
-            return View(data);
+            var st = GetMapper().Map<List<StudentDTO>>(data);
+            return View(st);
         }
         [HttpGet]
         public ActionResult Create() { 
             return View();
         }
         [HttpPost]
-        public ActionResult Create(Student s) { 
-            db.Students.Add(s);
+        public ActionResult Create(StudentDTO s) {
+                       
+            var st= GetMapper().Map<Student>(s);
+            db.Students.Add(st);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
