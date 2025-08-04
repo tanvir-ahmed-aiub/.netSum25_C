@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using EComm.Auth;
 using EComm.DTOs;
 using EComm.EF;
 using System;
@@ -39,14 +40,65 @@ namespace EComm.Controllers
             else {
                 cart = (List<ProductDTO>)Session["cart"];
             }
-            cart.Add(pr);
-            Session["cart"] = cart;
+
+            var exp = (from pro in cart where pro.Id == pr.Id select pro).SingleOrDefault();
+            if (exp == null)
+            {
+                cart.Add(pr);
+                Session["cart"] = cart;
+            }
+            else {
+                exp.Qty++;
+            }
+            
             return RedirectToAction("Index");
 
         }
         public ActionResult Cart() { 
             var cart = (List<ProductDTO>)Session["cart"];//unboxing cart from session
             return View(cart);
+        }
+        [HttpPost]
+        [Logged]
+        public ActionResult PlaceOrder(decimal gTotal) {
+            
+            var user = (User)Session["user"];
+            var o = new Order() { 
+                StatusId = 1,
+                Date = DateTime.Now,
+                CustomerId = (int) user.CustomerId,
+                Total = gTotal
+            };
+            db.Orders.Add(o);
+            db.SaveChanges();
+
+            var cart = (List<ProductDTO>)Session["cart"];
+            foreach (var item in cart) {
+                var od = new OrderDetail() {
+                    PId = item.Id,
+                    Qty  = item.Qty,
+                    Price = item.Price,
+                    OId = o.Id
+                };
+                db.OrderDetails.Add(od);
+            }
+            db.SaveChanges();
+            TempData["Msg"] = "Order Placed Successfully";
+            Session["cart"] = null;
+            return RedirectToAction("Index");
+        }
+        public ActionResult Decrease(int id) {
+            var cart = (List<ProductDTO>)Session["cart"];
+            var p = (from pr in cart where pr.Id == id select pr).SingleOrDefault();
+            p.Qty--;
+            return RedirectToAction("Cart");
+        }
+        public ActionResult Increase(int id)
+        {
+            var cart = (List<ProductDTO>)Session["cart"];
+            var p = (from pr in cart where pr.Id == id select pr).SingleOrDefault();
+            p.Qty++;
+            return RedirectToAction("Cart");
         }
     }
 }
