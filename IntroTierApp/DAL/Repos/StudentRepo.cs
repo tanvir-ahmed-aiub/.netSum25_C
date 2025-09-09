@@ -1,5 +1,6 @@
 ﻿using DAL.EF;
 using DAL.EF.Tables;
+using DAL.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace DAL.Repos
 {
-    public class StudentRepo
+    internal class StudentRepo : IStudentRepo
     {
         UMSContext db;
         public StudentRepo() { 
