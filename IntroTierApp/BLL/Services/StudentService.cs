@@ -37,5 +37,9 @@ namespace BLL.Services
             var data = DataAccessFactory.StudentData().Create(st);
             return data;
         }
+        public bool IsElgbleSch(int id) { 
+            var cgpa = DataAccessFactory.StudentFeature().CalculateCgpa(id);
+            return cgpa >= 3.75;
+        }
     }
 }

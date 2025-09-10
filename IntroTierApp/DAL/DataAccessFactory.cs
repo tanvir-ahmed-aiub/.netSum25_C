@@ -1,4 +1,5 @@
-﻿using DAL.Interfaces;
+﻿using DAL.EF.Tables;
+using DAL.Interfaces;
 using DAL.Repos;
 using System;
 using System.Collections.Generic;
@@ -10,9 +11,15 @@ namespace DAL
 {
     public class DataAccessFactory
     {
-        public static IStudentRepo StudentData() {
-            return new StudentRepoV2();
+        public static IRepo<Student,int,bool> StudentData() {
+            return new StudentRepo();
         }
-        
+        public static IStudentFeature StudentFeature() {
+            return new StudentRepo();
+        }
+        public static IRepo<Department, int, Department> DepartmentData()
+        {
+            return new DepartmentRepo();
+        }
     }
 }

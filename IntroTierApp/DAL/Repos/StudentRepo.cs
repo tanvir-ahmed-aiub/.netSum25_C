@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace DAL.Repos
 {
-    internal class StudentRepo : IStudentRepo
+    internal class StudentRepo : IRepo<Student,int,bool>,IStudentFeature
     {
         UMSContext db;
         public StudentRepo() { 
@@ -33,6 +33,12 @@ namespace DAL.Repos
         }
         public bool Delete(int id) {
             return true;
+        }
+        public float CalculateCgpa(int id) {
+            //
+            //
+            //
+            return 3.45f;
         }
     }
 }
