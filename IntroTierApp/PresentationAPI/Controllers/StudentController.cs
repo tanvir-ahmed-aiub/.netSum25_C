@@ -6,12 +6,15 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Web.Http.Cors;
 
 namespace PresentationAPI.Controllers
 {
     [RoutePrefix("api/student")]
+   
     public class StudentController : ApiController
     {
+        [EnableCors("*", "*", "*")]
         [HttpGet]
         [Route("all")]
         public HttpResponseMessage Get() {

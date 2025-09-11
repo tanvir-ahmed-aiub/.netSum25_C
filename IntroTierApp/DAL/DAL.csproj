@@ -52,15 +52,25 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DataAccessFactory.cs" />
+    <Compile Include="EF\Tables\Course.cs" />
+    <Compile Include="EF\Tables\Department.cs" />
     <Compile Include="EF\Tables\Student.cs" />
     <Compile Include="EF\UMSContext.cs" />
+    <Compile Include="Interfaces\IRepo.cs" />
+    <Compile Include="Interfaces\IStudentFeature.cs" />
     <Compile Include="Interfaces\IStudentRepo.cs" />
     <Compile Include="Migrations\202509040833324_initDB.cs" />
     <Compile Include="Migrations\202509040833324_initDB.designer.cs">
       <DependentUpon>202509040833324_initDB.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202509110932261_Update.cs" />
+    <Compile Include="Migrations\202509110932261_Update.designer.cs">
+      <DependentUpon>202509110932261_Update.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repos\CourseRepo.cs" />
+    <Compile Include="Repos\DepartmentRepo.cs" />
     <Compile Include="Repos\StudentRepo.cs" />
     <Compile Include="Repos\StudentRepoV2.cs" />
   </ItemGroup>
@@ -71,6 +81,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202509040833324_initDB.resx">
       <DependentUpon>202509040833324_initDB.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202509110932261_Update.resx">
+      <DependentUpon>202509110932261_Update.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
