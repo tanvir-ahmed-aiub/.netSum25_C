@@ -13,3 +13,4 @@ C:\Users\Tanvir Ahmed\Desktop\.NET\C\IntroTierApp\DAL\obj\Debug\DAL.csproj.CopyC
 C:\Users\Tanvir Ahmed\Desktop\.NET\C\IntroTierApp\DAL\obj\Debug\DAL.Migrations.initDB.resources
 C:\Users\Tanvir Ahmed\Desktop\.NET\C\IntroTierApp\DAL\obj\Debug\DAL.csproj.GenerateResource.cache
 C:\Users\Tanvir Ahmed\Desktop\.NET\C\IntroTierApp\DAL\obj\Debug\DAL.Migrations.Update.resources
+C:\Users\Tanvir Ahmed\Desktop\.NET\C\IntroTierApp\DAL\obj\Debug\DAL.Migrations.Auth.resources

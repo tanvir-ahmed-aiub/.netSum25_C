@@ -1,5 +1,6 @@
 ﻿using BLL.DTOs;
 using BLL.Services;
+using PresentationAPI.Auth;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,6 +15,7 @@ namespace PresentationAPI.Controllers
    
     public class StudentController : ApiController
     {
+        [Logged]
         [EnableCors("*", "*", "*")]
         [HttpGet]
         [Route("all")]

@@ -5,6 +5,7 @@
                 var xhr = new XMLHttpRequest();
                 xhr.onreadystatechange = function(){
                     document.getElementById("rs").innerHTML=this.readyState;
+                    debugger;
                     if(this.readyState == 4 && this.status==200){
                         var response = this.responseText;
                         var arr = JSON.parse(response);
@@ -23,6 +24,7 @@
                     }
                 };
                 xhr.open("GET","https://localhost:44373/api/student/all",true);
+                xhr.setRequestHeader("Authorization","e7180737-2b12-4d86-a602-a818dde67b9c");
                 xhr.send();
 
             }

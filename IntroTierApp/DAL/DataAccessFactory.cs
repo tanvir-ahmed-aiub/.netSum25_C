@@ -11,7 +11,7 @@ namespace DAL
 {
     public class DataAccessFactory
     {
-        public static IRepo<Student,int,bool> StudentData() {
+        public static IRepo<Student, int, bool> StudentData() {
             return new StudentRepo();
         }
         public static IStudentFeature StudentFeature() {
@@ -20,6 +20,12 @@ namespace DAL
         public static IRepo<Department, int, Department> DepartmentData()
         {
             return new DepartmentRepo();
+        }
+        public static IRepo<Token, string, Token> TokenData() {
+            return new TokenRepo();
+        }
+        public static IAuth AuthData() {
+            return new UserRepo();
         }
     }
 }
